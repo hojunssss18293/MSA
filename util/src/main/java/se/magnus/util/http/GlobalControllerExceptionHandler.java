@@ -16,10 +16,21 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import se.magnus.api.exceptions.InvalidInputException;
 import se.magnus.api.exceptions.NotFoundException;
 
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import se.magnus.api.exceptions.BadRequestException;
+
 @RestControllerAdvice
 class GlobalControllerExceptionHandler {
 
   private static final Logger LOG = LoggerFactory.getLogger(GlobalControllerExceptionHandler.class);
+
+  @ResponseStatus(BAD_REQUEST)
+  @ExceptionHandler(BadRequestException.class)
+  public @ResponseBody HttpErrorInfo handleBadRequestExceptions(
+    ServerHttpRequest request, BadRequestException ex) {
+
+    return createHttpErrorInfo(BAD_REQUEST, request, ex);
+  }
 
   @ResponseStatus(BAD_REQUEST)
   @ExceptionHandler(TypeMismatchException.class)
