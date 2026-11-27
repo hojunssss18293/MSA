@@ -12,7 +12,7 @@ include ':microservices:review-service'
 include ':microservices:recommendation-service'
 include ':microservices:product-composite-service'
 
-
+def securityPatches = [
     'com.rabbitmq:amqp-client'                                    : '5.37.1',    
     'at.yawk.lz4:lz4-java'                                        : '1.11.4',    
     'org.xerial.snappy:snappy-java'                               : '1.1.10.9',  
@@ -33,10 +33,10 @@ include ':microservices:product-composite-service'
     'io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi': '1.67.0',
     'io.opentelemetry:opentelemetry-exporter-common'              : '1.67.0',
     'io.opentelemetry:opentelemetry-extension-trace-propagators'  : '1.67.0',
-    'io.opentelemetry:opentelemetry-exporter-zipkin'              : '1.64.0',    // last release of the Zipkin exporter
+    'io.opentelemetry:opentelemetry-exporter-zipkin'              : '1.64.0'  
 ]
 gradle.beforeProject { project ->
-    // Application classpaths: explicit versions win over the Spring Boot and Spring Cloud BOMs
+    
     project.pluginManager.withPlugin('io.spring.dependency-management') {
         project.dependencyManagement {
             dependencies {
