@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class ServiceUtil {
   private static final Logger LOG = LoggerFactory.getLogger(ServiceUtil.class);
 
-  private String port;
+  private final String port;
 
   private String serviceAddress = null;
 

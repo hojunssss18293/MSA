@@ -3,14 +3,12 @@ package se.magnus.api.composite.product;
 import java.util.List;
 
 public class ProductAggregate {
-  // Fields are not final: Jackson 3 does not set final fields when deserializing
-  // (MapperFeature.ALLOW_FINAL_FIELDS_AS_MUTATORS is disabled by default).
-  private int productId;
-  private String name;
-  private int weight;
-  private List<RecommendationSummary> recommendations;
-  private List<ReviewSummary> reviews;
-  private ServiceAddresses serviceAddresses;
+  private final int productId;
+  private final String name;
+  private final int weight;
+  private final List<RecommendationSummary> recommendations;
+  private final List<ReviewSummary> reviews;
+  private final ServiceAddresses serviceAddresses;
 
   public ProductAggregate(
     int productId,
